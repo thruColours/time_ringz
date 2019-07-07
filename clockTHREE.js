@@ -107,7 +107,7 @@ function draw(){
 
   // strokeWeight ( 0 );
 
-	ellipse ( random( -180 , 180), random( -100, 100), random( 0.2018 , history /80.18 ));
+	ellipse ( random( -180 , 180), random( -100, 100), random( 0.2018 , history /60.18 ));
 
   stroke ( random(260, 100), 244 , 244);
 
