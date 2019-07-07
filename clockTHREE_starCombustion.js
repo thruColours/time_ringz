@@ -4,6 +4,7 @@ var clockRadius; // the radius is half of this
 function setup(){
   // windowWidth and windowHeight mean the canvas will fill the window
 	createCanvas( windowWidth, windowHeight );
+	background ( black );
   // we check which dimension is smaller and base the size of the
   // clock off of that - i.e. if the window is shorter than it is
   // wide, then the clock will be 80% (0.8) of the height of the window
@@ -15,12 +16,13 @@ function setup(){
   // we also store the clock radius for convenience as this is used
   // to set the size of the hands.
   clockRadius = clockDiameter / 2;
+	// background ( black );
 
-	frameRate(7.5);
 }
 
 function draw(){
-  background( 255 );
+	background(51);
+  // background( 255 );
   // The values for time divisions come with their own range.
   // We need to re-map them to rotate them around our circle.
   // Rather than understanding a circular rotation as 0-360 degrees,
@@ -37,22 +39,21 @@ function draw(){
   var hourAngle = map( hour(), 0, 24, 0, Math.PI * 4 );
 
   //my custom variables
-  var secondSize = map( second(), 0, 0.79, 0, random( Math.PI * 1.99, Math.PI * 2 ));
+  var secondSize = map( second(), 0, 0.79, 0, random( Math.PI * 1.99, Math.PI * 0.2 ));
 
-  var secondSize2 = map( second(), 0, 12, 0, random( Math.PI * 1.8, Math.PI * 1.9 ));
+  var secondSize2 = map( second(), 0, 2000, 0, random( Math.PI * 1.8, Math.PI * 1.9 ));
 
 
-  // var secondColour = map( second(), 0, 20, 0, 120);
-	var secondColour = map( second(), 0, 60, 0, 220);
+  var secondColour = map( second(), 0, 20, 0, 120);
 
-	var minuteSize = map( minute(), 0, 0.79, 0, random( Math.PI * 1.98, Math.PI * 2 ));
+	var minuteSize = map( minute(), 0, 0.79, 0, random( Math.PI * 1.98, Math.PI * 0.2 ));
 
-	var hourSize = map( hour(), 0, 0.79, 0, Math.PI * 4 );
+	var hourSize = map( hour(), 0, 0.79, 0, Math.PI * 0.4 );
 	//changed to 4 because 24 is double the respective value range of minutes and seconds
 	//to ask Ollie/Gareth: make incriments of hour change with minutes (potentially seconds too)
 
-  // var history = map( year(), 0, 201.8, 0, random( Math.PI , Math.PI * 0.16 ));
-  var history = map( year(), 0, 201.9, 0, random( Math.PI , Math.PI * 0.0001 ));
+  //var history = map( year(), 0, 201.8, 0, random( Math.PI , Math.PI * 0.16 ));
+  var history = map( year(), 0, 201.9, 0, random( Math.PI , Math.PI * 20 ));
 
 
 
@@ -67,53 +68,41 @@ function draw(){
 
 	ellipse( 0, 0, hourSize);
 
-	fill( secondColour, 200, 10, 80 );
+	fill( secondColour, 5, 0, 80 );
 
   for( var hourSize = 0; hourSize > hourAngle; minuteSize + 1 );
 
 	ellipse( 0, 0, minuteSize);
 
-  fill( 100, 50, secondColour, 80 );
+  fill( 10, 5, secondColour, 80 );
 
 	for( var minuteSize = 0; minuteSize > minuteAngle; minuteSize + 1 );
 
   ellipse( 0, 0, secondSize);
 
-  fill( secondColour, 200, 100, 100, 80);
+  fill( secondColour, 0, 0, 100, 80);
 
   for( var secondSize = 0; secondSize > secondAngle; secondSize + 1 );
 
-  strokeWeight ( secondSize2/2 );
+  strokeWeight ( secondSize2 );
 
   //enable for mad
-  stroke ( random( 200, 100), 0, 20 );
+  // stroke ( random( 620, 100), 10, 0 );
 
   //disable for calm
-  //stroke ( random( 20, 100), 10, 0 );
+  // stroke ( random( 20, 100), 10, 0 );
 
   //year ellipse1
   //ellipse ( random( -200 , 200), random( -30, 30), history);
 
   //year ellipse2
-  // ellipse ( random( -180 , 180), random( -100, 100), random( 0.2019 , history /40 ));
-	//
-  // stroke ( 244, 244 , 244);
-	//
-  // strokeWeight ( 0 );
-	//
-  // fill ( 200, 20, 20, 244 );
+  ellipse ( random( -180 , 180), random( -100, 100), random( 0.2019 , history /20.19 ));
 
-//year ellipse from Codepen clock 4
-
-  // strokeWeight ( 0 );
-
-	ellipse ( random( -180 , 180), random( -100, 100), random( 0.2018 , history /80.18 ));
-
-  stroke ( random(260, 100), 244 , 244);
+  stroke ( 244, 244 , 244);
 
   strokeWeight ( 0 );
 
-  fill ( 200, 20, 20, 100 );
+  fill ( 200, 20, 20, 244 );
 
 
 
